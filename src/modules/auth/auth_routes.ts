@@ -1,7 +1,12 @@
-import { Router, Request, Response } from "express";
-import { loginController } from "./auth_controller";
+import express, { Router } from "express";
+import { forgetPassController, loginController, sendOTPController, signUpController } from "./auth_controller";
+
+const authRoutes =express.Router();
+
+authRoutes.post('/login',loginController);
+authRoutes.post('/signUp',signUpController);
+authRoutes.post('/forgetPassword',forgetPassController);
+authRoutes.post('/sendOTP',sendOTPController);
 
 
-const authRouter = Router();
-
-export default authRouter.get("/",loginController);
+export default authRoutes;
